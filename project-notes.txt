@@ -4,10 +4,9 @@ TODO:
 - logo(nav, footer)
 - links(nav, footer)
 - product gallery layout nd categories
+- font
 
 
 Deployment Errors:
-- checkout-nav.tsx
-- nav-search-results.tsx
-- downloaded my fonts localy
-- localStorage error
+- className instead of styles proberty in radio, 
+product list, and product components

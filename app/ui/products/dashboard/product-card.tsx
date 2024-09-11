@@ -10,11 +10,11 @@ import { selectSearchBar, toggleSearchBar } from '@/redux/features/nav/searchBar
 
 export default function Product({
     product,
-    styles,
+    className,
     navSearch,
 }: {
     product: any
-    styles?: string
+    className?: string
     navSearch?: boolean
 }) {
     const API_URL = process.env.NEXT_PUBLIC_API_URL
@@ -50,7 +50,7 @@ export default function Product({
                 key={product.id}
                 onClick={handleClick}
             >
-                <div className={`grid grid-cols-6 h-full gap-2 ${styles}`}>
+                <div className={`grid grid-cols-6 h-full gap-2 ${className}`}>
                     <div
                         className={clsx(
                             'overflow-hidden col-span-2 sm:col-span-2',

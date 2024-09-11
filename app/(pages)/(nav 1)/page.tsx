@@ -24,9 +24,9 @@ export default async function Page({
       <div className="z-10">
         <Hero />
 
-        <div id="new-collection">
-          <ProductGallery title='new collection' tag='new' />
-        </div>
+        <div id="new-collection"></div>
+        <ProductGallery title='new collection' tag='new' />
+        <ProductGallery title='jerseys collection' tag='jersey' />
         
       </div>
     </main>

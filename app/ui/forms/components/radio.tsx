@@ -1,13 +1,13 @@
 export default function Radio({
     name,
     options,
-    styles = '',
+    className = '',
     component,
     componentIndex
 }: {
     name: string
     options: string[]
-    styles?: string
+    className?: string
     component?: React.ReactNode
     componentIndex?: number
 }) {
@@ -77,7 +77,7 @@ export default function Radio({
         )
     })
     return (
-        <div className={` ${styles}`}>
+        <div className={` ${className}`}>
             {listItems.map((item: any) => 
                     item
             )}

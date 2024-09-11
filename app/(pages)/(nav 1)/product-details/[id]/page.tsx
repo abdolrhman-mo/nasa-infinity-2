@@ -8,13 +8,13 @@ import AddToCartLink from "@/app/ui/product-details/add-to-cart-link"
 import CustomLink from "@/app/ui/common/custom-link"
 import Button from "@/app/ui/common/button"
 import Heading from "@/app/ui/common/heading"
+import ProductDetailsSkeleton from "@/app/ui/skeletons/product-details-skeleton"
 import { fetchProductsAPI } from "@/app/lib/services/products/productService"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/redux/store"
 import { initializeProducts } from "@/redux/features/products/productsSlice"
 import { setProduct } from "@/redux/features/products/productSlice"
-import ProductDetailsSkeleton from "@/app/ui/skeletons/product-details-skeleton"
 import { abdoRedirect } from "@/app/lib/actions"
 import { ProductType } from "@/app/lib/types/productTypes"
 import { ROUTES } from "@/app/lib/constants/routes"
@@ -86,8 +86,13 @@ export default function Page({
                         </div>
                         <div className="space-y-4">
                             <Heading level={2}>{product.name}</Heading>
-                            <div className="flex space-x-4">
+                            <div className="flex space-x-3">
                                 {/* <p className="line-through">1300.00 EGP</p> */}
+                                <span
+                                  className='text-red-400 line-through'
+                                >
+                                  750.00 EGP
+                                </span>
                                 <p>{product.price} EGP</p>
                                 {/* <p className="text-red-500">Save 300.00 EGP</p> */}
                             </div>

@@ -37,7 +37,7 @@ export default function Page({
 
                 <ProductsList
                     products={products}
-                    styles="py-12"
+                    className="py-12"
                     limit={8}
                     search={true}
                     query={query}

@@ -1,12 +1,16 @@
-import { hasTag } from '@/app/lib/utils'
+'use client'
+
 import clsx from 'clsx'
 import Product from '@/app/ui/products/product-card'
 import CustomLink from '@/app/ui/common/custom-link'
+import { hasTag } from '@/app/lib/utils'
 import { ROUTES } from '@/app/lib/constants/routes'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function ProductsList({
     products = [],
-    styles = '',
+    className = '',
     productStyles = '',
     tag = 'all',
     limit = 0,
@@ -16,7 +20,7 @@ export default function ProductsList({
     exceptProduct,
 }: {
   products?: any[]
-  styles?: string
+  className?: string
   productStyles?: string
   tag?: string
   limit?: number
@@ -61,29 +65,48 @@ export default function ProductsList({
     })
     i = 0
 
+    // ANIMATIONS
+
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true })
+
+    const productListVariants = {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.2, // Delay between product animations
+        }
+      }
+    }
+
     return (
         <>
-            <div 
-                className={clsx(
-                    // Sizing
-                    'w-1/2',
-                    // Spacing
-                    'mx-auto',
-                    // Grid
-                    'grid grid-cols-1 md:grid-cols-2 md:gap-x-12 gap-y-4',
-                    // Effects
-                    'opacity-100',
-                ) + ` ${styles}`}
+            <motion.div
+              ref={ref}
+              variants={productListVariants}
+              initial={'hidden'}
+              animate={isInView ? 'show' : 'hidden'}
+              className={clsx(
+                  // Sizing
+                  'w-1/2',
+                  // Spacing
+                  'mx-auto',
+                  // Grid
+                  'grid grid-cols-1 md:grid-cols-2 md:gap-x-12 gap-y-8',
+                  // Effects
+                  'opacity-100',
+              ) + ` ${className}`}
             >
                 {filteredProducts.map((product: any) =>
-                    <Product
-                        key={product.id}
-                        product={product}
-                        styles={productStyles}
-                        navSearch={navSearch}
-                    />
+                  <Product
+                    key={product.id}
+                    product={product}
+                    className={productStyles}
+                    navSearch={navSearch}
+                  />
                 )}
-            </div>
+            </motion.div>
             
             {/* If it's a searching product list */}
                 {

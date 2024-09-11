@@ -17,7 +17,7 @@ export default function Footer() {
     })
 
     return (
-        <div className="mb-20">
+        <div className="m-20">
             <hr className="w-24 mx-auto mt-6 mb-12" />
             <div className="w-5/6 mx-auto text-sm flex flex-col md:flex-row text-center md:text-left justify-around space-y-4 md:space-y-0">
                 <ul>

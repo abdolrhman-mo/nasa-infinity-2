@@ -1,8 +1,7 @@
-export const APP_NAME = 'Sou Beads'
-export const INSTAGRAM_LINK = 'https://www.instagram.com/'
+export const APP_NAME = 'moko'
 
 export const EXTERNAL_LINKS = {
-  INSTAGRAM: 'https://www.instagram.com/sou_beadss/',
+  INSTAGRAM: 'https://www.instagram.com/mokocollections.eg/',
 }
 
 // Define the links and their paths

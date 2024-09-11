@@ -155,7 +155,7 @@ export default function CheckoutForm({
             <Radio 
                 name='shippingmethod' 
                 options={['Cairo Delivery (3 Working Days)']}
-                styles='col-span-2' 
+                className='col-span-2' 
             />
 
             <Heading level={4} className='col-span-2'>Payment</Heading>
@@ -166,10 +166,10 @@ export default function CheckoutForm({
                     // 'Pay via (Debit / Credit cards / Wallets / Installments)', 
                     'Cash on Delivery(COD)'
                 ]} 
-                styles='col-span-2'
+                className='col-span-2'
                 component={
                     <Note
-                        styles='transition-all duration-500 ease-in-out overflow-hidden h-0 py-0 peer-checked:h-fit peer-checked:p-6' />
+                      className='transition-all duration-500 ease-in-out overflow-hidden h-0 py-0 peer-checked:h-fit peer-checked:p-6' />
                 }
                 componentIndex={0}
             />

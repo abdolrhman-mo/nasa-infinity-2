@@ -1,5 +1,21 @@
 import localFont from 'next/font/local'
 
+export const syncopate = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Syncopate/Syncopate-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Syncopate/Syncopate-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-inter',
+})
+
 export const inter = localFont({
   src: [
     {

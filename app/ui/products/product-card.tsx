@@ -3,30 +3,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import clsx from 'clsx'
-import { motion } from 'framer-motion'
-
-import { useSelector, useDispatch } from 'react-redux'
-import { selectSearchBar, toggleSearchBar } from '@/redux/features/nav/searchBarSlice'
+import { motion, useInView } from 'framer-motion'
+import { useDispatch } from 'react-redux'
+import { toggleSearchBar } from '@/redux/features/nav/searchBarSlice'
 import { ROUTES } from '@/app/lib/constants/routes'
+import { useRef } from 'react'
 
 export default function Product({
-    product,
-    styles,
-    navSearch,
+  product,
+  className,
+  navSearch,
 }: {
-    product: any
-    styles?: string
-    navSearch?: boolean
+  product: any
+  className?: string
+  navSearch?: boolean
 }) {
-    const image = {
-        normal: {
-            height: '100%',
-        },
-        hovered: {
-            height: '105%',
-        }
-    }
-    
     // const searchBar = useSelector(selectSearchBar)
     const dispatch = useDispatch()
     let handleClick = () => {
@@ -34,60 +25,97 @@ export default function Product({
             dispatch(toggleSearchBar())
         }
     }
+    
+    // ANIMATIONS
 
-    // let imageUrl = '/imgs/pants/pants1.jpg'
-    // console.log(`image url: ${product.image}`)
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true })
+
+    const productVariants = {
+      hidden: {
+        opacity: 0, 
+        y: 50
+      },
+      show: {
+        opacity: 1, 
+        y: 0,
+        transition: {
+          duration: 0.5
+        }
+      },
+    }
+
+    const imageVariants = {
+      normal: {
+        height: '350px',
+      },
+      hovered: {
+        height: '400px',
+      }
+    }
 
     return (
         <motion.div
-            animate={'normal'}
-            whileHover='hovered'
+          ref={ref}
+          variants={productVariants}
+          initial={'hidden'}
+          animate={isInView ? 'show' : 'hidden'}
+          whileHover='hovered'
+          className={`flex justify-center ${className}`}
         >
-            <Link
-                className='group' 
-                href={ROUTES.PRODUCT_DETAILS(product.id)}
-                key={product.id}
-                onClick={handleClick}
+          <Link
+            className='group flex flex-col justify-center' 
+            href={ROUTES.PRODUCT_DETAILS(product.id)}
+            key={product.id}
+            onClick={handleClick}
+          >
+            <motion.div
+              initial={false}
+              // initial={'normal'}
+              className={clsx(
+                'w-[250px] h-[300px] md:w-[300px] md:h-[350px] overflow-hidden',
+                // 'flex items-center',
+              )}
             >
-                <div className={`grid grid-rows-12 h-full gap-4 ${styles}`}>
-                    <div
-                        className={clsx(
-                            'overflow-hidden row-span-7 sm:row-span-10', 
-                            'flex items-center'
-                        )}
-                    >
-                        <motion.div
-                            initial={false}
-                            variants={image}
-                        >
-                            <Image
-                                className={clsx(
-                                    // Layout & Sizing
-                                    'object-cover h-full max-h-60 sm:max-h-full',
-                                    // Transitions & Animations
-                                    'transition-all duration-300 ease-in-out',
-                                )}
-                                src={product.image} 
-                                alt={product.name}
-                                width={500}
-                                height={500}
-                            /> 
-                        </motion.div>
-                    </div>
-                    <div className='row-span-5 sm:row-span-2 text-center'>
-                        <h4
-                            className='uppercase text-md tracking-widest row-span-2'
-                            >
-                            {product.name}
-                        </h4>
-                        <p
-                            className='text-slate-600 text-sm row-span-1'
-                        >
-                            {product.price} EGP
-                        </p>
-                    </div>
-                </div>
-            </Link>
+              {/* Another div to put variants in it */}
+              <motion.div
+                variants={imageVariants}
+              >
+                <Image
+                  src={product.image} 
+                  alt={product.name}
+                  width={500}
+                  height={500}
+                  className={clsx(
+                    'w-full h-full',
+                    'object-cover',
+                  )}
+                /> 
+              </motion.div>
+            </motion.div>
+            <br />
+            <div className='row-span-5 sm:row-span-2 text-center'>
+                <h4
+                  className='uppercase text-md tracking-widest row-span-2'
+                >
+                  {product.name}
+                </h4>
+                <p
+                  className='text-slate-600 text-sm row-span-1'
+                >
+                  <span
+                    className='text-red-400 line-through'
+                  >
+                    750.00 EGP
+                  </span>
+                  <span
+                    className='pl-2'
+                  >
+                    {product.price} EGP
+                  </span>
+                </p>
+            </div>
+          </Link>
         </motion.div>
     )
 }

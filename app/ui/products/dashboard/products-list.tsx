@@ -75,7 +75,7 @@ export default function ProductsList({
                     <Product
                         key={product.id}
                         product={product}
-                        styles={productStyles}
+                        className={productStyles}
                         navSearch={navSearch}
                     />
                 )}

@@ -16,8 +16,10 @@ export default async function ProductGallery({
 
     return (
         <div className="mt-20">
-            <Heading level={2} className="text-center text-[#5D2A1E]">{title}</Heading>
-            <ProductsList products={products} tag={tag} limit={100} />
+          <div className="w-3/5 mx-auto">
+            <Heading level={2} className="text-center !uppercase text-[#5D2A1E]">{title}</Heading>
+          </div>
+          <ProductsList products={products} tag={tag} limit={100} />
         </div>
     )
 }

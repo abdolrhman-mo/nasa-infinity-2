@@ -31,7 +31,7 @@ export default function NavSearchResults({
         >
             <div className="w-5/6 mx-auto pt-12">
                 <ProductsList
-                    styles='grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-y-12'
+                    className='grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-y-12'
                     productStyles='max-h-64'
                     limit={5}
                     search={true}
