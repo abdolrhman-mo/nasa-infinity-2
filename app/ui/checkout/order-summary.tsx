@@ -43,8 +43,8 @@ export default function OrderSummary({
                 <ProductsList cartItems={cartItems} />
             )}
 
-            <Input placeholder='discount code' className='col-span-5' />
-            <Input type='submit' value='Apply' className='col-span-1' />
+            {/* <Input placeholder='discount code' className='col-span-5' />
+            <Input type='submit' value='Apply' className='col-span-1' /> */}
 
             <div className="col-span-6">
                 <div className="flex justify-between">

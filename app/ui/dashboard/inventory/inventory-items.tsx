@@ -8,10 +8,13 @@ export default function InventoryItems({
     inventoryItems: any[]
     products: any[]
 }) {
+    // Sort inventory items by newest to oldest
     const sortedInventoryItems = [...inventoryItems].sort(
-        (a, b) => 
-            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
     )
+
+    console.log(sortedInventoryItems)
 
     const groupedItems = sortedInventoryItems.reduce((acc: { [key: string]: any[] }, item) => {
         const date = new Date(item.created_at).toLocaleDateString()
