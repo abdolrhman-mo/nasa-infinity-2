@@ -1,16 +1,23 @@
 /** @type {import('next').NextConfig} */
 
-const url = new URL(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000')
+let apiUrl
+
+try {
+  apiUrl = new URL(process.env.NEXT_PUBLIC_API_URL)
+} catch (error) {
+  console.error('Invalid API URL:', process.env.NEXT_PUBLIC_API_URL)
+  apiUrl = new URL('http://localhost:8000')
+}
 
 const nextConfig = {
-    images: {
-      remotePatterns: [
-        {
-            protocol: url.protocol.replace(':', ''),
-            hostname: url.hostname,
-            port: url.port || '',
-            pathname: '/media/products/**',
-        },
+  images: {
+    remotePatterns: [
+      {
+        protocol: apiUrl.protocol.replace(':', ''),
+        hostname: apiUrl.hostname,
+        port: apiUrl.port || '',
+        pathname: '/media/products/**',
+      },
     ],
   }
 }
