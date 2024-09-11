@@ -1,7 +1,4 @@
 import clsx from "clsx"
-import CustomLink from "../common/custom-link"
-import Heading from "../common/heading"
-import { ROUTES } from "@/app/lib/constants/routes"
 import Link from "next/link"
 
 export default function Hero() {
@@ -10,7 +7,7 @@ export default function Hero() {
             <div className="overflow-hidden h-full bg-black">
                 <div className={clsx(
                         // Layout & Sizing
-                        'w-full h-screen relative',
+                        'w-full h-[120vh] md:h-screen relative',
                         // Background
                         "bg-[url('/hero-mobile.png')] md:bg-[url('/hero.jpg')] bg-cover bg-center",
                     )}
