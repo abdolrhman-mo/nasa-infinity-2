@@ -25,13 +25,13 @@ export default function Select({
     error?: string | false
 }) {
     return (
-        <>
+        <div className={className}>
             {label && (
                 <Label>{label}</Label>
             )}
             <select
                 className={
-                  `text-gray-900 border-1 border-gray-200 text-sm rounded capitalize ${className}`
+                  `text-gray-900 border-1 border-gray-200 text-sm rounded capitalize w-full`
                 }
                 name={name}
                 onChange={onChange}
@@ -53,6 +53,6 @@ export default function Select({
             {error && (
               <p className={"text-red-500 text-xs italic mt-2"}>{error}</p>
             )}
-        </>
+        </div>
     )
 }

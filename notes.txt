@@ -62,20 +62,6 @@ Secondary Text:   text-gray-700            for less prominent text.
 
 
 
-
-All Orders Page Features:
-responsive ✅
-pagination ✅
-search     ✅
-batch actions for orders      ✅
-get a specific date           ✅
-maybe make today & yesterday  ✅
-order detail styling          ✅
-add shipping address to table ✅
-filter by high value
-sort by (oldest, latest, high value)
-
-
 Situation #1:
 when a customer want to return a product 
 => he either contact brand, or searches for a cancel order button on website if he's logged in
@@ -104,80 +90,6 @@ we then have to know the date it marked delivered and who marked it as delivered
 
 
 
-
-
-
-
-
-
-
-TODO:
-- if item is sold out(opacity: .7, sold out padge)
-- companyName const in placehoder-data or env vars
-and the other links
-
-choose between addresses
-
-- change name in checkout form
-- move_to_orders when not logged in, aashan a3ml kda lazem add orders to cart even when not logged in
-
-add first name and last name to orderrr
-
-buy it now button
-
-maybe play with forms and make them better
-
-cancel order
-
-forgot password
-
-show multiple images in product details page
-
-add tags when adding new product && make shop owner create tags(or categories)
-
-add an api for cities delivery prices
-
-- mohssen => error when accessing orders if the user is not the admin
-
-make orderService and orderThunk more organized and make the code more readable
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-mohsen:
-
-authService.ts, fetchUserData, unautharized ('/api-auth/{id}/')
-authService.ts, updateUserName, unautharized ('/api-auth/{id}/')
-fetch orderItems and most of apis don't work when not admin
-buyItNow not working because it doesn't create a guest order
-
-
-
-if not admin
-GET http://localhost:8000/orders/users-view/ 403 (Forbidden)
-solu: bec. of verification. the email must be activated
-0.
-
-
-
-errors
-
-GET http://localhost:8000/api-auth/1/ 401 (Unauthorized) 
-(it works in swagger but it doesn't work in fetch)
-
-POST http://localhost:8000/orders/users-view/ 500 (Internal Server Error)
-server => Field 'id' expected a number but got <django.contrib.auth.models.AnonymousUser object at 0x0000023C134D8F80>.
-
 when creating an order:
   guest order
     - u shouldn't need token nor user id
@@ -185,37 +97,4 @@ when creating an order:
   normal order 
     - u can use token
     - then the order res comes including user id
-
-
-
-Test baad mohamed
-
-buy-it-now
-
-
-
-
-
-Mohsen todo list 
-- remove varification
-
-
-
-
-Edits I made 
-
-1- if (request.user.authenticated) user = request.user : user = None
-    to allow non authenticated users to create orders
-    but now it still needs order_items to create order 
-    and the unauthenticated user doesn't have order_items assotaited with him
-
-2- /orders/users-view/{id}/ gives 200 but it doesn't edit anything
-    i did this using partial_update function in OrderViewSet
-    then i updated orderSerializer to accept nested data to be able to send user: { first_name: 'abdo' }
-    and i did this by creating update function in orderSerializer
-    and inside the servializer i removed adderss object and replaced it with address fields(addressText: 'test', country: 'egypt')
-    because in models the it was address fields not address object(address: {addressText: 'test'})
-
-3- GET http://localhost:8000/api-auth/1/ 401 (Unauthorized)
-    i solved this error by making TokenAuthentication the default authentication class for user viewset
 

@@ -33,7 +33,7 @@ export default function Input({
   const isTextarea = type === 'textarea'
 
   return (
-    <div className={`py-2 ${className}`}>
+    <div className={className}>
       {label && type !== 'submit' && (
         <Label>{label}</Label>
       )}
@@ -44,7 +44,7 @@ export default function Input({
             'p-2',
             'text-sm placeholder:text-sm placeholder:capitalize',
             'rounded',
-            className
+            // className
           )}
           value={value}
           name={name}
@@ -65,7 +65,7 @@ export default function Input({
             {
               'cursor-pointer text-white capitalize font-semibold bg-black': type === 'submit',
             },
-            className
+            // className
           )}
           value={value}
           name={name}

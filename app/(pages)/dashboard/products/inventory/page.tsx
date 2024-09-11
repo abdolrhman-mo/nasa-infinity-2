@@ -75,33 +75,44 @@ export default function Page() {
         <>
             <Heading level={4} className="capitalize">Make changes</Heading>
             <div className="w-fit bg-white shadow rounded-lg p-4">
-                <form className="grid grid-cols-2 space-y-2" onSubmit={handleSubmit}>
+                <form className="space-y-2" onSubmit={handleSubmit}>
                     <Select 
-                        label="product" 
-                        name="product"
-                        value={formData.product}
-                        onChange={handleChange}
-                        required={true}
-                        options={products} 
-                        isProductsSelect={true} 
+                      label="product" 
+                      name="product"
+                      value={formData.product}
+                      onChange={handleChange}
+                      required={true}
+                      options={products} 
+                      isProductsSelect={true} 
+                      className="grid grid-cols-2"
                     />
                     <Select 
-                        label="size label" 
-                        name="size_text"
-                        value={formData.size_text}
-                        onChange={handleChange}
-                        required={true}
-                        options={['xs', 's', 'm', 'l', 'xl', 'xxl']}
+                      label="size label" 
+                      name="size_text"
+                      value={formData.size_text}
+                      onChange={handleChange}
+                      required={true}
+                      options={['xs', 's', 'm', 'l', 'xl', 'xxl']}
+                      className="grid grid-cols-2"
                     />
                     <Select 
-                        label="type" 
-                        name="type"
-                        value={formData.type}
-                        onChange={handleChange}
-                        required={true}
-                        options={['add', 'minus']}
+                      label="type" 
+                      name="type"
+                      value={formData.type}
+                      onChange={handleChange}
+                      required={true}
+                      options={['add', 'minus']}
+                      className="grid grid-cols-2"
                     />
-                    <Input label="quantity" type="number" name="quantity" value={formData.quantity} onChange={handleChange} required={true} />
+                    <Input 
+                      label="quantity" 
+                      type="number" 
+                      name="quantity" 
+                      value={formData.quantity} 
+                      onChange={handleChange} 
+                      required={true}
+                      className="grid grid-cols-2"
+                    />
                     {/* <div>
                         <label>Size (optional)</label>
                         <input
@@ -113,15 +124,15 @@ export default function Page() {
                         />
                     </div> */}
                     <Select
-                        label="change reason" 
-                        name="description"
-                        value={formData.description}
-                        onChange={handleChange}
-                        required={true}
-                        options={['restock', 'return', 'sale', 'adjustment', 'damage/loss']}
+                      label="change reason" 
+                      name="description"
+                      value={formData.description}
+                      onChange={handleChange}
+                      required={true}
+                      options={['restock', 'return', 'sale', 'adjustment', 'damage/loss']}
+                      className="grid grid-cols-2"
                     />
-                    <br />
-                    <Input className="col-span-2" type="submit" value={'submit'} />
+                    <Input type="submit" value={'submit'} />
                 </form>
             </div>
             <br />
