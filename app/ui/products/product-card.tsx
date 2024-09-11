@@ -79,6 +79,7 @@ export default function Product({
             >
               {/* Another div to put variants in it */}
               <motion.div
+                className='h-full w-full'
                 variants={imageVariants}
               >
                 <Image
