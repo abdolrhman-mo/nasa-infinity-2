@@ -6,11 +6,11 @@ import Link from "next/link"
 
 export default function Hero() {
     return (
-        <div className="h-[90vh] md:h-screen">
+        <div className="h-screen">
             <div className="overflow-hidden h-full bg-black">
                 <div className={clsx(
                         // Layout & Sizing
-                        'w-full h-[90vh] md:h-screen relative',
+                        'w-full h-screen relative',
                         // Background
                         "bg-[url('/hero-mobile.png')] md:bg-[url('/hero.jpg')] bg-cover bg-center",
                     )}
