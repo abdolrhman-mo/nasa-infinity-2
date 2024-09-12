@@ -10,6 +10,7 @@ import addressReducer from '@/redux/features/address/addressSlice'
 import orderReducer from '@/redux/features/orders/orderUserSlice'
 import orderAdminReducer from '@/redux/features/orders/orderAdminSlice'
 import checkoutReducer from '@/redux/features/checkout/checkoutSlice'
+import authReducer from '@/redux/features/auth/authSlice'
 
 export const useAppDispatch = () => useDispatch<AppDispatch>()
 
@@ -26,6 +27,7 @@ export const makeStore = () => {
             order: orderReducer,
             orderAdmin: orderAdminReducer,
             checkout: checkoutReducer,
+            auth: authReducer,
         },
         devTools: process.env.NODE_ENV !== 'production',
     })

@@ -75,8 +75,9 @@ export const loginAPI = async (email: string, password: string) => {
         return data
     } 
     catch (error) {
-        console.error('Throwed an error!', error)
-        throw error // Re-throw the error after logging it
+      console.log('authService.ts:', error)
+      console.error('Throwed an error!', error)
+      throw error // Re-throw the error after logging it
     }
 }
 

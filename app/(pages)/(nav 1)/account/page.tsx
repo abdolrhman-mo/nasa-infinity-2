@@ -17,7 +17,7 @@ export default function Page() {
     if (typeof window !== 'undefined') {
       const data = localStorage.getItem('email')
       if (data) {
-        setEmail(JSON.parse(data))
+        setEmail(data)
       }
     }
   })

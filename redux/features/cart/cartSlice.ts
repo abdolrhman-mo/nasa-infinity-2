@@ -119,6 +119,7 @@ const cartSlice = createSlice({
 
       .addCase(auth.pending, (state) => {
         state.status = 'loading'
+        state.error = null
       })
       .addCase(auth.fulfilled, (state, action) => {
         const { cartItems, error } = action.payload

@@ -9,6 +9,9 @@ import Heading from "@/app/ui/common/heading"
 import { userSignupSchema } from "@/app/lib/validation/userValidation"
 import { auth } from "@/redux/features/auth/authThunk"
 import { ROUTES } from "@/app/lib/constants/routes"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { clearError } from "@/redux/features/auth/authSlice"
 
 export default function Page({
   searchParams
@@ -19,8 +22,12 @@ export default function Page({
   }
 }) {
   const dispatch = useAppDispatch()
-  const status = useAppSelector(state => state.cart.status)
-  const error = useAppSelector(state => state.cart.error)
+  const error = useAppSelector(state => state.auth.error)
+  const normalDispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(clearError())
+  }, [])
 
   const formik = useFormik({
     initialValues: {

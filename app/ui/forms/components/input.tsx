@@ -33,7 +33,7 @@ export default function Input({
   const isTextarea = type === 'textarea'
 
   return (
-    <div className={className}>
+    <div className={`my-2 ${className}`}>
       {label && type !== 'submit' && (
         <Label>{label}</Label>
       )}

@@ -8,6 +8,9 @@ import Input from "@/app/ui/forms/components/input"
 import Heading from "@/app/ui/common/heading"
 import { auth } from '@/redux/features/auth/authThunk'
 import { ROUTES } from '@/app/lib/constants/routes'
+import { useAppSelector } from '@/redux/hooks'
+import { useEffect } from 'react'
+import { clearError } from '@/redux/features/auth/authSlice'
 
 export default function Page({
     searchParams,
@@ -18,9 +21,14 @@ export default function Page({
     }
 }) {
     const dispatch = useAppDispatch()
+    const error = useAppSelector(state => state.auth.error)
 
     // const query = searchParams?.query || ''
     // const currentPage = Number(searchParams?.page) || 1
+
+    useEffect(() => {
+      dispatch(clearError())
+    }, [])
 
     const formik = useFormik({
       initialValues: {
@@ -41,7 +49,10 @@ export default function Page({
         {/* <NavSearchResults query={query} currentPage={currentPage} /> */}
         <form onSubmit={formik.handleSubmit} noValidate className="max-w-md p-4">
           <Heading level={2} className="mx-auto w-fit">Login</Heading>
-          
+                          
+          {/* Display overall error message */}
+          {error && <div className="bg-red-100 border border-red-500 text-red-700 p-3 rounded mb-4">{error}</div>}
+
           {/* Form Inputs  */}
           <Input 
             label={'email'} 
