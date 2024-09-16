@@ -20,7 +20,7 @@ export const dashboradRoutes = [
   },
   // {
   //     name: 'products', 
-  //     path: 'products',
+  //     path: '/products',
   //     nestedLinks: [
   //         // {
   //         //     name: 'collections',
@@ -52,4 +52,8 @@ export const dashboradRoutes = [
   //     name: 'themes', 
   //     path: 'themes',
   // },
+  {
+    name: 'shipping and delivery',
+    path: '/shipping'
+  }
 ]

@@ -2,10 +2,7 @@
 
 import AddNewAddressSection from "@/app/ui/account/address/sections/add-new-address-section"
 import AddressesSection from "@/app/ui/account/address/sections/addresses-section"
-import Button from "@/app/ui/common/button"
 import Heading from "@/app/ui/common/heading"
-import { ArrowLongLeftIcon } from "@heroicons/react/24/outline"
-import Link from "next/link"
 import { useState } from "react"
 
 export default function Page() {

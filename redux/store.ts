@@ -11,6 +11,8 @@ import orderReducer from '@/redux/features/orders/orderUserSlice'
 import orderAdminReducer from '@/redux/features/orders/orderAdminSlice'
 import checkoutReducer from '@/redux/features/checkout/checkoutSlice'
 import authReducer from '@/redux/features/auth/authSlice'
+import popupReducer from '@/redux/features/popup/popupSlice'
+import shippingRateReducer from '@/redux/features/dashboard/shippingRate/shippingRateSlice'
 
 export const useAppDispatch = () => useDispatch<AppDispatch>()
 
@@ -28,6 +30,8 @@ export const makeStore = () => {
             orderAdmin: orderAdminReducer,
             checkout: checkoutReducer,
             auth: authReducer,
+            popup: popupReducer,
+            shippingRate: shippingRateReducer,
         },
         devTools: process.env.NODE_ENV !== 'production',
     })

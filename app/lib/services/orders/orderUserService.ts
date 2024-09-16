@@ -84,6 +84,7 @@ export const addOrderDataAPI = async (
           city: orderData.address.city,
           country: 'Egypt',
           phone_number: orderData.user.phone_number,
+          governorate: orderData.address.governorate,
         })
       })
   
@@ -154,7 +155,6 @@ export const createOrderAPI = async (
   orderData: OrderRequest
 ) => {
   try {
-    console.log('aslkdfjla;sd')
     let headers: any = {
       'Content-Type': 'application/json',
     }
@@ -175,6 +175,7 @@ export const createOrderAPI = async (
         city: orderData.address.city,
         country: 'Egypt',
         phone_number: orderData.user.phone_number,
+        governorate: orderData.address.governorate,
       })
     })
 
@@ -258,6 +259,7 @@ export const createGuestOrderAPI = async (
         phone_number: orderData.user.phone_number,
         order_first_name: orderData.user.first_name,
         order_last_name: orderData.user.last_name,
+        governorate: orderData.address.governorate,
       })
     })
 

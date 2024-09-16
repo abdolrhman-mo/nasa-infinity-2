@@ -1,21 +1,19 @@
 import Link from 'next/link'
-import {
-    XMarkIcon,
-} from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import CartItems from '@/app/ui/cart/cart-items'
-import { motion, Variants } from 'framer-motion'
 import CustomLink from '../../common/custom-link'
-import { selectNavCart, toggleNavCart } from '@/redux/features/nav/navCartSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
+import { XMarkIcon } from '@heroicons/react/24/outline'
+import { motion, Variants } from 'framer-motion'
+import { toggleNavCart } from '@/redux/features/nav/navCartSlice'
 import { useAppSelector } from '@/redux/hooks'
 import { ROUTES } from '@/app/lib/constants/routes'
+import { useAppDispatch } from '@/redux/store'
 
 export default function NavCart() {
-    const dispatch = useDispatch()
-    const navCart = useSelector(selectNavCart)
-    // const totalPrice = useSelector((state: RootState) => state.cart.totalPrice)
+    const dispatch = useAppDispatch()
+
+    const activePopup = useAppSelector(state => state.popup.activePopup)
+    
     const totalPrice = useAppSelector(state => state.cart.totalPrice)
     const cartItems = useAppSelector(state => state.cart.items)
 
@@ -69,7 +67,7 @@ export default function NavCart() {
     return (
         <motion.div
             initial={ false }
-            animate={ navCart ? 'show' : 'hide' }
+            animate={ activePopup === 'navCart' ? 'show' : 'hide' }
         >
             <motion.div
                 variants={cart}

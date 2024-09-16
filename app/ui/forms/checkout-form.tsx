@@ -1,18 +1,19 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { useAppDispatch } from '@/redux/store'
 import { placeBuyItNowOrder, placeUserOrder } from '@/redux/features/orders/orderUserThunk'
 import { useFormik } from 'formik'
 import { fetchDefaultUserData } from '@/redux/features/checkout/checkoutThunk'
 import { useAppSelector } from '@/redux/hooks'
+import { checkoutSchema } from '@/app/lib/validation/checkoutValidation'
 import Input from '@/app/ui/forms/components/input'
 import Select from '@/app/ui/forms/components/select'
 import Heading from '../common/heading'
 import Radio from './components/radio'
 import Note from '../checkout/note'
 import OrderSummary from '../checkout/order-summary'
-import { checkoutSchema } from '@/app/lib/validation/checkoutValidation'
+import { fetchShippingRates } from '@/redux/features/dashboard/shippingRate/shippingRateThunk'
 
 // let governorates_names_en: string[] = []
 
@@ -32,16 +33,22 @@ export default function CheckoutForm({
   const dispatch = useAppDispatch()
   const defaultData = useAppSelector(state => state.checkout.defaultData)
   const status = useAppSelector(state => state.checkout.status)
+  
+  const shippingRates = useAppSelector(state => state.shippingRate.items)
+  const shippingRatesLoading = useAppSelector(state => state.shippingRate.loading)
+  const [shippingPrice, setShippingPrice] = useState<number | null>(null)
 
   useEffect(() => {
     dispatch(fetchDefaultUserData())
-  }, [])
+    dispatch(fetchShippingRates())
+  }, [dispatch])
     
   const formik = useFormik({
     initialValues: defaultData || {
       address: {
         id: 0,
         country: 'Egypt',
+        governorate: '',
         city: '',
         address_text: '',
       },
@@ -70,6 +77,17 @@ export default function CheckoutForm({
     enableReinitialize: true,
   })
 
+  const handleGovernorateChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.target
+    formik.setFieldValue('address.governorate', value)
+  
+    // Additional logic
+    const price = shippingRates.find(rate => rate.governorate === value)?.shipping_price
+    if (price) {
+      setShippingPrice(price)
+    }
+  }
+
   return (
     <form noValidate onSubmit={formik.handleSubmit} className='text-sm w-5/6 mx-auto my-12 grid lg:grid-cols-2 gap-16'>
         <div className={`grid grid-cols-2 gap-2 ${className}`}>
@@ -78,7 +96,7 @@ export default function CheckoutForm({
                 name="address.country"
                 options={['Egypt']}
                 value={formik.values.address.country}
-                onChange={formik.handleChange} 
+                onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={formik.touched.address?.country && formik.errors.address?.country}
                 className='col-span-2' 
@@ -128,16 +146,25 @@ export default function CheckoutForm({
                 className='col-span-2 md:col-span-1' 
             />
 
-            {/* <Select 
-                name="governorate"
-                options={governorates_names_en} 
-                className='col-span-6 md:col-span-2' 
-                /> */}
-            <Input 
-                name="postalCode"
-                placeholder='Postal code (optional)' 
-                className='col-span-2 md:col-span-1'
-            />
+            {shippingRatesLoading ?
+              <p className='col-span-2 md:col-span-1 mb-2 mt-4'>Loading...</p> : 
+              <Select
+                  name="address.governorate"
+                  options={(() => {
+                    const governorates = shippingRates
+                      .map(shippingRate => 
+                        shippingRate.governorate
+                      )
+                    governorates.unshift('Governorate')
+                    return governorates
+                  })()}
+                  value={formik.values.address.governorate}
+                  onChange={handleGovernorateChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.address?.governorate && formik.errors.address?.governorate}
+                  className='col-span-2 md:col-span-1'
+              />
+            }
             
             <Input 
                 name="user.phone_number"
@@ -188,7 +215,7 @@ export default function CheckoutForm({
         </div>
         <div className='grid h-fit'>
             <Heading level={4} className='lg:hidden'>order summary</Heading>
-            <OrderSummary buyItNowId={buyItNowId} buyItNowSize={buyItNowSize} />
+            <OrderSummary shippingPrice={shippingPrice} buyItNowId={buyItNowId} buyItNowSize={buyItNowSize} />
         </div>
         <Input
           onChange={() => console.log('changed')}

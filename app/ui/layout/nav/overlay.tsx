@@ -1,3 +1,5 @@
+'use client'
+
 import clsx from "clsx"
 import { motion, Variants } from "framer-motion"
 
@@ -5,12 +7,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toggleSearchBar, selectSearchBar } from '@/redux/features/nav/searchBarSlice'
 import { selectMobileNav, toggleMobileNav } from "@/redux/features/nav/mobileNavSlice"
 import { selectNavCart, toggleNavCart } from "@/redux/features/nav/navCartSlice"
+import { hideBackgroundShadow, hidePopup, selectBackgroundShadow } from "@/redux/features/popup/popupSlice"
+import { useAppDispatch } from "@/redux/store"
+import { useAppSelector } from "@/redux/hooks"
 
-export default function BackgroundShadow() {
-    const dispatch = useDispatch()
-    const searchBar = useSelector(selectSearchBar)
-    const mobileNav = useSelector(selectMobileNav)
-    const navCart = useSelector(selectNavCart)
+export default function Overlay() {
+    const dispatch = useAppDispatch()
+    const isOverlayVisible = useAppSelector(state => state.popup.isOverlayVisible)
 
     const shadow: Variants = {
         show: {
@@ -28,7 +31,7 @@ export default function BackgroundShadow() {
     return (
         <motion.div
             initial={false}
-            animate={(mobileNav || navCart || searchBar) ? 'show' : 'hide'}
+            animate={isOverlayVisible ? 'show' : 'hide'}
             variants={shadow}
             className={clsx(
                 // Layout & Sizing
@@ -38,14 +41,7 @@ export default function BackgroundShadow() {
                 'hidden',
             )}
             onClick={() => {
-                if (mobileNav) {
-                    dispatch(toggleMobileNav())
-                } else if (navCart) {
-                    dispatch(toggleNavCart())
-                } 
-                else {
-                    dispatch(toggleSearchBar())
-                }
+              dispatch(hidePopup())
             }}
         ></motion.div>
     )

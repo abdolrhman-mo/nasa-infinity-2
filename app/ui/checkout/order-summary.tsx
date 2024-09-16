@@ -11,9 +11,11 @@ import { fetchBuyItNowItem, fetchCartItems } from '@/redux/features/cart/cartThu
 export default function OrderSummary({
     buyItNowId,
     buyItNowSize,
+    shippingPrice,
 }: {
     buyItNowId?: number
     buyItNowSize?: string
+    shippingPrice: number | null
 }) {
 
     const dispatch = useAppDispatch()
@@ -53,11 +55,17 @@ export default function OrderSummary({
                 </div>
                 <div className="flex justify-between">
                     <p className=''>Shipping</p>
-                    <p className=''>60.00 EGP</p>
+                    {shippingPrice ?
+                      <p className=''>{shippingPrice} EGP</p> :
+                      <p>Loading...</p>
+                    }
                 </div> 
                 <div className="flex justify-between">
                     <Heading level={5}>total</Heading>
-                    <Heading level={5}>{`${totalPrice + 60} EGP`}</Heading>
+                    {shippingPrice ?
+                      <Heading level={5}>{`${totalPrice + shippingPrice} EGP`}</Heading> :
+                      <Heading level={5} className='!lowercase'>choose governorate</Heading>
+                    }
                 </div> 
             </div>
         </div>

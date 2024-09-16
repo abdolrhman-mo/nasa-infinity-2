@@ -1,16 +1,15 @@
+import MobileNavItem from "@/app/ui/layout/nav/mobile-nav-item"
 import clsx from "clsx"
 import { motion } from 'framer-motion'
-import MobileNavItem from "@/app/ui/layout/nav/mobile-nav-item"
-
-import { useSelector } from "react-redux"
-import { selectMobileNav } from "@/redux/features/nav/mobileNavSlice"
 import { ROUTES } from "@/app/lib/constants/routes"
+import { useAppSelector } from "@/redux/hooks"
 
 export default function({
     loggedIn,
 }: {
     loggedIn: boolean
 }) {
+    const activePopup = useAppSelector(state => state.popup.activePopup)
 
     const mobileNavVariants = {
         show: {
@@ -29,12 +28,11 @@ export default function({
             }
         }
     }
-    const mobileNav = useSelector(selectMobileNav)
 
     return (
         <motion.div
             initial={false}
-            animate={mobileNav ? 'show' : 'hide'}
+            animate={activePopup === 'mobileNav' ? 'show' : 'hide'}
             variants={mobileNavVariants}
             className={clsx(
                 // Layout

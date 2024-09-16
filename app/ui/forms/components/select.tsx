@@ -2,6 +2,7 @@ import clsx from "clsx"
 import Label from "./label"
 
 export default function Select({
+    defaultId = null,
     value = '',
     name = '',
     onChange,
@@ -13,6 +14,7 @@ export default function Select({
     label = false,
     error,
   }: {
+    defaultId?: number | null
     value?: string | number
     name?: string
     onChange?: any
@@ -25,7 +27,7 @@ export default function Select({
     error?: string | false
 }) {
     return (
-        <div className={className}>
+        <div className={`my-2 ${className}`}>
             {label && (
                 <Label>{label}</Label>
             )}
@@ -40,6 +42,7 @@ export default function Select({
             >
                 {options.map((option, i) => 
                     <option
+                        selected={(defaultId && i === defaultId - 1) || (defaultId === null && i === 0) ? true : false}
                         key={i}
                         className={clsx(
                             "text-gray-900 text-sm capitalize",

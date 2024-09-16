@@ -10,6 +10,7 @@ export const transformAddressData = async (list: any) => {
       user_id: address.user,
       country: address.country,
       city: address.city,
+      governorate: address.governorate,
       address_text: address.addressText,
       is_default: address.is_default
     }

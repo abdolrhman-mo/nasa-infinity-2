@@ -8,19 +8,18 @@ import { useSelector } from 'react-redux'
 import { selectSearchBar } from '@/redux/features/nav/searchBarSlice'
 import { selectMobileNav } from '@/redux/features/nav/mobileNavSlice'
 import { selectNavCart } from '@/redux/features/nav/navCartSlice'
+import { useAppSelector } from '@/redux/hooks'
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const searchBar = useSelector(selectSearchBar)
-  const mobileNav = useSelector(selectMobileNav)
-  const navCart = useSelector(selectNavCart)
+  const isOverlayVisible = useAppSelector(state => state.popup.isOverlayVisible)
 
   return (
       <body className={clsx(
-        (navCart || searchBar || mobileNav) ? 'overflow-hidden' : '',
+        (isOverlayVisible) ? 'overflow-hidden' : '',
         'bg-mainColor'
       )}>
         <Nav />

@@ -1,4 +1,4 @@
-import { OrderRequest, OrderType } from "@/app/lib/types/orderTypes"
+import { OrderRequest } from "@/app/lib/types/orderTypes"
 import { createSlice } from "@reduxjs/toolkit"
 import { fetchDefaultUserData } from "./checkoutThunk"
 

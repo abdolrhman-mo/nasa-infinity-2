@@ -5,6 +5,9 @@ export const checkoutSchema = yup.object().shape({
     country: yup.string()
       .notRequired(),
       // .required("Country is required."),
+    governorate: yup.string()
+      .required("Governorate is required.")
+      .notOneOf(['Governorate', ''], 'Please select a governorate.'),
     city: yup.string()
       .required("City is required."),
     address_text: yup.string()

@@ -3,9 +3,11 @@ import Label from "../forms/components/label"
 import Input from "../forms/components/input"
 
 export default function Search({
-  onSearch
+  onSearch,
+  placeholder,
 }: {
   onSearch: (query: string) => void
+  placeholder?: string
 }) {
   const [query, setQuery] = useState('')
 
@@ -20,7 +22,7 @@ export default function Search({
       <Input 
         value={query} 
         onChange={handleChange} 
-        placeholder="Search by customer name, order ID, or address" 
+        placeholder={placeholder} 
       />
     </div>
   )

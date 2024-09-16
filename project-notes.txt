@@ -8,5 +8,7 @@ TODO:
 
 
 Deployment Errors:
-- className instead of styles proberty in radio, 
-product list, and product components
+
+
+
+NOW TODO:

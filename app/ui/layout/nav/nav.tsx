@@ -1,26 +1,24 @@
 'use client'
 
-import Link from 'next/link'
 import { 
-    MagnifyingGlassIcon, 
-    UserIcon, 
-    ShoppingBagIcon, 
-    Bars3CenterLeftIcon,
+  MagnifyingGlassIcon, 
+  UserIcon, 
+  ShoppingBagIcon, 
+  Bars3CenterLeftIcon,
 } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 import Logo from '@/app/ui/common/logo'
 import clsx from 'clsx'
 import NavCart from '@/app/ui/layout/nav/nav-cart'
 import NavSearchBar from '@/app/ui/layout/nav/nav-search-bar'
-import BackgroundShadow from '@/app/ui/layout/nav/background-shadow'
 import MobileNav from '@/app/ui/layout/nav/mobile-nav'
-import { motion } from 'framer-motion'
+import Overlay from './overlay'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectSearchBar } from '@/redux/features/nav/searchBarSlice'
-import { toggleMobileNav } from '@/redux/features/nav/mobileNavSlice'
 import { useState } from 'react'
 import { abdoRedirect } from '@/app/lib/actions'
-import { toggleNavCart } from '@/redux/features/nav/navCartSlice'
 import { ROUTES } from '@/app/lib/constants/routes'
+import { setActivePopup } from '@/redux/features/popup/popupSlice'
 
 export default function Nav() {
     const dispatch: any = useDispatch()
@@ -83,7 +81,7 @@ export default function Nav() {
                 </Link>
                 {/* mobile */}
                 <Bars3CenterLeftIcon className='h-6 md:hidden cursor-pointer' onClick={() => {
-                    dispatch(toggleMobileNav())
+                    dispatch(setActivePopup({ activePopup: 'mobileNav' }))
                     handleBarsIconClick()
                 }} />
 
@@ -144,11 +142,7 @@ export default function Nav() {
                         <Link href={ROUTES.HOME}>
                             <ShoppingBagIcon 
                                 className='h-6 px-2 cursor-pointer' 
-                                onClick={() => {
-                                        dispatch(toggleNavCart())
-                                        // handleCartClick()
-                                    }
-                                }    
+                                onClick={() => dispatch(setActivePopup({ activePopup: 'navCart' }))}    
                             />
                         </Link>
                     </li>
@@ -162,7 +156,7 @@ export default function Nav() {
             </div>
 
             {/* Background Shadow */}
-            <BackgroundShadow />
+            <Overlay />
 
             {/* Search Bar */}
             <NavSearchBar />

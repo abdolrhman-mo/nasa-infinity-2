@@ -1,17 +1,17 @@
 'use client'
 
-import Heading from "@/app/ui/common/heading"
 import { useEffect, useState } from "react"
 import { OrderResponse } from "@/app/lib/types/orderTypes"
 import { useAppDispatch } from "@/redux/store"
 import { useAppSelector } from "@/redux/hooks"
 import { fetchAllOrders } from "@/redux/features/orders/orderAdminThunk"
+import { startOfMonth, startOfToday, startOfWeek } from "date-fns"
+import Heading from "@/app/ui/common/heading"
 import OrdersTable from "@/app/ui/dashboard/all-orders/orders-table"
 import OrdersSummary from "@/app/ui/dashboard/all-orders/orders-summary"
 import OrdersFilter from "@/app/ui/dashboard/all-orders/orders-filter"
 import Pagination from "@/app/ui/common/pagination"
 import Search from "@/app/ui/common/search"
-import { startOfMonth, startOfToday, startOfWeek } from "date-fns"
 import DateRangeFilter from "@/app/ui/common/date-range-filter"
 
 export default function Page() {
@@ -109,7 +109,7 @@ export default function Page() {
             <div className="flex gap-4 flex-col md:flex-row items-center">
               <OrdersFilter onFilter={handleFilter} />
               <DateRangeFilter onFilter={handleDateFilter} />
-              <Search onSearch={handleSearch} />
+              <Search onSearch={handleSearch} placeholder="Search by customer name, order ID, or address" />
             </div>
 
             <OrdersTable orders={ordersToDisplay} />

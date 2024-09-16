@@ -91,7 +91,7 @@ export default function Page() {
 
   return (
       <>
-        <div className="text-center">
+        {/* <div className="text-center">
           <Heading level={4}>add product</Heading>
         </div>
         <form className="w-fit" onSubmit={handleSubmit} encType="multipart/form-data">
@@ -115,7 +115,7 @@ export default function Page() {
             value={description} 
             onChange={(e: any) => setDescription(e.target.value)}
             required={true}
-          />
+          /> */}
           {/* <div>
               <label htmlFor="image">Image:</label>
               <input
@@ -126,20 +126,18 @@ export default function Page() {
                   required
               />
           </div> */}
-          <Input 
+          {/* <Input 
             label={'image'}
             type={'file'}
             onChange={handleFileChange}
             required={true}
           />
           <Input type="submit" value="upload product" />
-        </form>
+        </form> */}
 
-        {message && <p>{message}</p>}
+        {/* {message && <p>{message}</p>} */}
 
         <div>
-          <br />
-          <br />
           <div className="text-center">
             <br />
             <Heading level={4}>all products</Heading>

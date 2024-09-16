@@ -39,3 +39,14 @@ export const formatDate = (dateString: string) => {
     day: 'numeric',
   }).format(date)
 }
+
+export const formatKeyToText = (text: string) => {
+  text = text.replace(/_/g, ' ')
+  return text.replace(/([A-Z])/g, ' $1').toLowerCase()
+}
+
+export const formatKeyListToText = (textList: any[]) => {
+  return textList.map(text => 
+    formatKeyToText(text)
+  )
+}

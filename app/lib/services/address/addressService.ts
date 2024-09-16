@@ -1,5 +1,4 @@
 import { AddressRequest } from "../../types/addressTypes"
-import { OrderRequest } from "../../types/orderTypes"
 import { transformAddressData } from "./addressUtility"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
@@ -42,6 +41,7 @@ export const editAddressAPI = async (
             id: addressId,
             user: localStorage.getItem('userId'),
             country: addressData.country,
+            governorate: addressData.governorate,
             city: addressData.city,
             addressText: addressData.address_text,
             is_default: addressData.is_default,
@@ -77,6 +77,7 @@ export const addAddressAPI = async (
           user: localStorage.getItem('userId'),
           country: addressData.country,
           city: addressData.city,
+          governorate: addressData.governorate,
           addressText: addressData.address_text,
           is_default: addressData.is_default,
         })

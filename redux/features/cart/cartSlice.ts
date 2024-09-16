@@ -27,6 +27,8 @@ const cartSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+
+      // Fetch Cart Items
       .addCase(fetchCartItems.pending, (state) => {
         state.status = 'loading'
       })
@@ -44,6 +46,8 @@ const cartSlice = createSlice({
         state.status = 'failed'
         state.error = action.error.message || 'Failed to fetch cart items'
       })
+
+      // Create Cart Item
       .addCase(addItemToCart.fulfilled, (state, action) => {
         const { cartItem, changeQuantity } = action.payload
         const existingItem = state.items.find(item => 
@@ -71,6 +75,8 @@ const cartSlice = createSlice({
         }
         state.status = 'idle'
       })
+
+      // Change Quantity
       .addCase(changeCartItemQuantity.fulfilled, (state, action) => {
         const { cartItemId, newQuantity } = action.payload
         const itemIndex = state.items.findIndex(item => item.id === cartItemId)
@@ -88,6 +94,8 @@ const cartSlice = createSlice({
           }
         }
       })
+
+      // Delete Cart Item
       .addCase(removeItemFromCart.fulfilled, (state, action) => {
         // Update total price before removing item
         const cartItem = state.items.find(item =>
@@ -102,7 +110,6 @@ const cartSlice = createSlice({
       })
 
       // Buy it now item
-
       .addCase(fetchBuyItNowItem.pending, (state) => {
         state.status = 'loading'
       })
@@ -116,7 +123,6 @@ const cartSlice = createSlice({
       })
 
       // Syncing items with local storage cart items after login & signup
-
       .addCase(auth.pending, (state) => {
         state.status = 'loading'
         state.error = null
@@ -143,7 +149,6 @@ const cartSlice = createSlice({
       })
 
       // Clear cart after logout
-
       .addCase(logout.fulfilled, (state) => {
         state.items = []
       })

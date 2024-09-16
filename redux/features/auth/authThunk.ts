@@ -56,7 +56,7 @@ export const auth = createAsyncThunk<
       
       return { cartItems, error: null }
   } catch (error: any) {
-    console.log('error', error)
+    console.log(error)
 
     if (newUser) {
       return rejectWithValue({ message: 'Failed to create account. Please try again.' })

@@ -10,6 +10,7 @@ export const unsetOtherDefaultAddresses = async (
       const editedAddress = await editAddressAPI(address.id, {
         country: address.country,
         city: address.city,
+        governorate: address.governorate,
         address_text: address.address_text,
         is_default: false,
       })

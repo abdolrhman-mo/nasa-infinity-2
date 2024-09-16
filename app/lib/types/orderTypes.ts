@@ -23,6 +23,7 @@ export interface OrderRequest {
   address: {
     id: number
     country: string
+    governorate: string
     city: string
     address_text: string
   }
@@ -40,6 +41,7 @@ export interface OrderResponse {
   order_items: OrderItemType[]
   address: {
     country: string
+    governorate: string
     city: string
     address_text: string
   }
