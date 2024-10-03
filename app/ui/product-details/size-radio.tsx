@@ -12,7 +12,7 @@ export default function SizeRadio({
     selectedSize: string
     addToCartClicked: boolean
 }) {
-    const cartItems = useSelector((state: RootState) => state.cart.items || [])
+    const cartItems = useSelector((state: RootState) => state.cart.cartItems || [])
     const product = useSelector((state: RootState) => state.products.product)
     const sizes = ['xs', 's', 'm', 'l', 'xl']
     
@@ -24,7 +24,7 @@ export default function SizeRadio({
                 product.sizes
                     .filter((productSize: any) => {
                         const existedCartItem = cartItems.find(item => 
-                            item.product.id === product.id && item.size === selectedSize
+                            item.product.id === product.id && item.size.size_text === selectedSize
                         )
                         if (existedCartItem) {
                             return (

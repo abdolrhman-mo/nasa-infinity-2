@@ -25,7 +25,7 @@ export default function EditAddressForm({
         country: "Egypt",
         city: address.city || "",
         address_text: address.address_text || "",
-        is_default: address.is_default || false
+        is_default: address.is_default || false,
     })
       
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -46,6 +46,7 @@ export default function EditAddressForm({
 
     let handleSubmit = async (e: any) => {
         dispatch(editAddress({ id: address.id, addressData: {
+            governorate: '',
             country: formData.country,
             city: formData.city,
             address_text: formData.address_text,

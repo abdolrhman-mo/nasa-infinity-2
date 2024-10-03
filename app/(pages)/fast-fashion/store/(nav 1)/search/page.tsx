@@ -36,7 +36,6 @@ export default function Page({
                 <Search placeholder="Search our store" />
 
                 <ProductsList
-                    products={products}
                     className="py-12"
                     limit={8}
                     search={true}

@@ -21,8 +21,7 @@ export default function Page({
     // const query = searchParams?.query || ''
     // const currentPage = Number(searchParams?.page) || 1
     
-    const cartItems = useAppSelector(state => state.cart.items)
-    const totalPrice = useAppSelector(state => state.cart.totalPrice)
+    const { cartItems, totalPrice } = useAppSelector(state => state.cart)
     
     return (
         <>

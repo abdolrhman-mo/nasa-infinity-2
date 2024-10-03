@@ -1,7 +1,7 @@
-export const APP_NAME = 'moko'
+export const APP_NAME = 'infinity store'
 
 export const EXTERNAL_LINKS = {
-  INSTAGRAM: 'https://www.instagram.com/mokocollections.eg/',
+  INSTAGRAM: 'https://www.instagram.com/',
 }
 
 // Define the links and their paths

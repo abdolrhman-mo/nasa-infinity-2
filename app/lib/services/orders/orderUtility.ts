@@ -20,6 +20,7 @@ export const transformOrderData = async (data: any) => {
     status: data.status,
     order_items: data.order_items,
     address: {
+      governorate: data.governorate,
       country: data.country,
       city: data.city,
       address_text: data.addressText

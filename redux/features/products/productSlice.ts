@@ -29,8 +29,10 @@ const productSlice = createSlice({
 
         if (state.item.id === action.payload.productId) {
             const sizeToUpdate = state.item.sizes.find(s => s.size_text === action.payload.sizeText)
-            if (sizeToUpdate && sizeToUpdate.quantity > 0) {
+            if (sizeToUpdate && sizeToUpdate.quantity) {
+              if (sizeToUpdate.quantity > 0) {
                 sizeToUpdate.quantity -= 1
+              }
             }
         }
     }

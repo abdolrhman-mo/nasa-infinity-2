@@ -9,6 +9,7 @@ export const updateUserData = async (orderData: OrderRequest) => {
       await editAddressAPI(
         orderData.address.id,
         {
+          governorate: orderData.address.governorate,
           country: orderData.address.country,
           city: orderData.address.city,
           address_text: orderData.address.address_text,

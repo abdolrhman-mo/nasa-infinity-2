@@ -20,6 +20,6 @@ Testing Results:
   not added to cart server yet
 
 
-preparing order
 
-
+Ecommerce Todo:
+- but it now MobileOrderSummary and CheckoutForm

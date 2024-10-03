@@ -1,5 +1,6 @@
 import clsx from "clsx"
 import Link from "next/link"
+import Heading from "../common/heading"
 
 export default function Hero() {
     return (
@@ -7,12 +8,15 @@ export default function Hero() {
             <div className="overflow-hidden h-full bg-black">
                 <div className={clsx(
                         // Layout & Sizing
-                        'w-full h-[120vh] md:h-screen relative',
+                        'w-full h-[120vh] md:h-screen relative opacity-50',
                         // Background
-                        "bg-[url('/hero-mobile.png')] md:bg-[url('/hero.jpg')] bg-cover bg-center",
+                        "bg-[url('/hero.jpg')] md:bg-[url('/hero.jpg')] bg-cover bg-center",
                     )}
                 ></div>
-                <div className="z-20 absolute top-2/3 md:top-3/4 left-1/2 -translate-x-1/2">
+                <div className="z-20 absolute top-1/2 md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 space-y-10">
+                    <Heading level={2} className="text-white">
+                      Shop Sustainably, Make an Impact
+                    </Heading>
                     <div className="w-fit mx-auto">
                       <Link
                         href={'#new-collection'}

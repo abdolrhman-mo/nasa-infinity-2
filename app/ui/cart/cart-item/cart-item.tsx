@@ -1,10 +1,9 @@
 import clsx from "clsx"
 import Image from "next/image"
-import { useDispatch } from "react-redux"
 import QuantityModifier from "./quantity-modifier"
 import { CartItemType } from "@/app/lib/types/cartTypes"
 import { useAppDispatch } from "@/redux/store"
-import { changeCartItemQuantity, removeItemFromCart } from "@/redux/features/cart/cartThunk"
+import { removeItemFromCart } from "@/redux/features/cart/cartThunk"
 import { XMarkIcon } from "@heroicons/react/24/outline"
 import { useAppSelector } from "@/redux/hooks"
 import { Spinner } from "../../skeletons/skeletons"
@@ -56,7 +55,7 @@ export default function CartItem({
                                 >
                                 Size: 
                             </span>
-                            <span className="uppercase text-xs"> {sizes[cartItem.size]} </span>
+                            <span className="uppercase text-xs"> {sizes[cartItem.size.size_text]} </span>
                         </p>
                       </div>
                       <div>

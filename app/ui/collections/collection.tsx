@@ -9,14 +9,12 @@ export default async function Collection({
     title: string
     tag: string
 }) {
-    const products = await fetchProductsAPI()
-
-    return (
+  return (
         <div className="pt-12">
             <div className="text-center">
                 <Heading level={2}>{title}</Heading>
             </div>
-            <ProductsList products={products} tag={tag} />
+            <ProductsList tag={tag} />
         </div>
     )
 }

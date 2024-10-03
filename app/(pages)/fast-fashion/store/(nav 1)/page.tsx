@@ -35,8 +35,7 @@ export default async function Page({
         <Hero />
 
         <div id="new-collection"></div>
-        <ProductGallery title='new collection' tag='new' />
-        <ProductGallery title='jerseys collection' tag='jersey' />
+        <ProductGallery title='best sellers' tag='new' />
       </div>
     </main>
   );
