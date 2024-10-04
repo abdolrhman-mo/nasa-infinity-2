@@ -1,10 +1,10 @@
 'use client'
 
-import Heading from "@/app/ui/common/heading"
-import Input from "@/app/ui/forms/components/input"
-import ProductsList from "@/app/ui/products/dashboard/products-list"
-import { useEffect, useState } from "react"
-import { fetchProductsAPI } from "@/app/lib/services/products/productService"
+import Heading from "@/app/ui/common/heading";
+import Input from "@/app/ui/forms/components/input";
+import Select from "@/app/ui/forms/components/select";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Page() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL
@@ -76,25 +76,14 @@ export default function Page() {
     }
   }
 
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const p = await fetchProductsAPI()
-        setProducts(p)
-      } catch (error) {
-        console.error('Failed to fetch products:', error)
-      }
-    }
-    getProducts()
-  }, [])
-
   return (
-      <>
-        {/* <div className="text-center">
+    <>
+        <br />
+        <br />
+        <div className="text-center">
           <Heading level={4}>add product</Heading>
         </div>
-        <form className="w-fit" onSubmit={handleSubmit} encType="multipart/form-data">
+        <form className="w-fit text-center mx-auto" onSubmit={handleSubmit} encType="multipart/form-data">
           <Input 
             label={'name'} 
             type={'text'} 
@@ -115,7 +104,7 @@ export default function Page() {
             value={description} 
             onChange={(e: any) => setDescription(e.target.value)}
             required={true}
-          /> */}
+          />
           {/* <div>
               <label htmlFor="image">Image:</label>
               <input
@@ -126,39 +115,27 @@ export default function Page() {
                   required
               />
           </div> */}
-          {/* <Input 
+          <Input 
             label={'image'}
             type={'file'}
             onChange={handleFileChange}
             required={true}
           />
-          <Input type="submit" value="upload product" />
-        </form> */}
-
-        {/* {message && <p>{message}</p>} */}
-
-        <div>
-          <div className="text-center">
-            <br />
-            <Heading level={4}>all products</Heading>
-            {/* <div className="grid grid-cols-4 bg-white rounded px-4 py-1">
-              <div className="col-span-1">
-                <Search placeholder="Search" />
-              </div>
-              <div className="col-span-3">
-                <Button theme="light">
-                  <AdjustmentsHorizontalIcon className="h-5 inline-block pr-2" />
-                  Filters
-                </Button>
-                <Dropdown />
-              </div>
-            </div> */}
-            <br />
-          </div>
-          <ProductsList products={products} />
+          <Input
+            label={'rating 1-5'}
+            type="number"
+          />
+          <Select
+            label={'material'}
+            options={['cotton', 'satan', 'wool']}
+          />
+          {/* <Input type="submit" value="upload product" className="bg-white text-black" /> */}
           <br />
-          <br />
-        </div>
-      </>
+          <Link
+            href={'/'}
+            className="text-black capitalize bg-white py-2 px-4 rounded-3xl cursor-pointer" 
+          >upload product</Link>
+        </form>        
+    </>
   )
 }

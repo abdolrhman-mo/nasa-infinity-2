@@ -32,6 +32,7 @@ export default function ProductsList({
   exceptProduct?: number
 }) {
     const { products, loading, error } = useAppSelector(state => state.products)
+    // const loading = false
 
     // console.log('component products-list: products', products)
 
@@ -96,18 +97,18 @@ export default function ProductsList({
               initial={'hidden'}
               animate={isInView ? 'show' : 'hidden'}
               className={clsx(
-                  // Sizing
-                  'w-1/2',
+                  // Sizingf
+                  'w-5/6',
                   // Spacing
                   'mx-auto',
                   // Grid
-                  'grid grid-cols-1 md:grid-cols-2 md:gap-x-12 gap-y-8',
+                  'grid grid-cols-1 md:grid-cols-4 md:gap-x-12 gap-y-8',
                   // Effects
                   'opacity-100',
               ) + ` ${className}`}
             >
               {loading ?
-                <ProductsListSkeleton count={2} /> :
+                <ProductsListSkeleton count={4} /> :
                 filteredProducts.map((product: any) =>
                   <Product
                     key={product.id}

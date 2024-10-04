@@ -14,10 +14,13 @@ export default function RootLayout({
   const isOverlayVisible = useAppSelector(state => state.popup.isOverlayVisible)
 
   return (
-      <body className={clsx(
-        (isOverlayVisible) ? 'overflow-hidden' : '',
-        'bg-mainColor'
-      )}>
+      <body 
+        className={clsx(
+          (isOverlayVisible) ? 'overflow-hidden' : '',
+          'bg-mainColor'
+        )}
+        style={{ background: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 53%, rgba(89,4,4,1) 100%)' }}
+      >
         <Nav />
         <div className="pt-16">
           {children}

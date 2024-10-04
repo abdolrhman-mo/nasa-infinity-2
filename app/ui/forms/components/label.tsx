@@ -7,7 +7,8 @@ export default function Label({
 }) {
     return (
         <label 
-            className={`flex text-sm font-medium text-gray-700 mb-1 capitalize p-1 items-center ${className}`}
+            // className={`flex text-sm font-medium text-gray-700 mb-1 capitalize p-1 items-center ${className}`}
+            className={`flex text-sm font-medium text-white     mb-1 capitalize p-1 items-center ${className}`}
         >
             {children}
         </label>

@@ -1,13 +1,21 @@
+import About from '@/app/ui/fast-fashion/about'
+import Hero from '@/app/ui/fast-fashion/hero'
+import Sdgs from '@/app/ui/fast-fashion/sdgs'
+import TakeAction from '@/app/ui/fast-fashion/take-action'
+import { rockwell } from '@/app/ui/fonts'
+import Nav from '@/app/ui/layout/nav/nav'
 import { NextPage } from 'next'
-import Link from 'next/link'
 
 interface Props {}
 
 const Page: NextPage<Props> = ({}) => {
   return (
-    <body>
-      <p>fast fashion</p>
-      <Link href={'/fast-fashion/store'}>View our store</Link>
+    <body className={`${rockwell.className}`}>
+      {/* <Nav /> */}
+      <Hero />
+      <About />
+      <Sdgs />
+      <TakeAction />
     </body>
   )
 }

@@ -47,10 +47,10 @@ export default function Nav() {
 
     const navItem = {
         normal: {
-            borderBottom: 'none',
+          borderBottom: 'none',
         },
         hover: {
-            borderBottom: '1px solid black',
+          borderBottom: '1px solid black',
         }
     }
     const searchBar = useSelector(selectSearchBar)

@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux'
 import { toggleSearchBar } from '@/redux/features/nav/searchBarSlice'
 import { ROUTES } from '@/app/lib/constants/routes'
 import { useRef } from 'react'
+import { StarIcon } from '@heroicons/react/20/solid'
+import StarsRating from './stars-rating'
 
 export default function Product({
   product,
@@ -47,10 +49,10 @@ export default function Product({
 
     const imageVariants = {
       normal: {
-        height: '350px',
+        height: '320px',
       },
       hovered: {
-        height: '400px',
+        height: '320px',
       }
     }
 
@@ -73,8 +75,10 @@ export default function Product({
               initial={false}
               // initial={'normal'}
               className={clsx(
-                'w-[250px] h-[300px] md:w-[300px] md:h-[350px] overflow-hidden',
+                // 'w-[250px] h-[300px] md:w-[300px] md:h-[350px] overflow-hidden',
+                'w-[250px] h-[300px] overflow-hidden',
                 // 'flex items-center',
+                'rounded-3xl',
               )}
             >
               {/* Another div to put variants in it */}
@@ -96,19 +100,22 @@ export default function Product({
             </motion.div>
             <br />
             <div className='row-span-5 sm:row-span-2 text-center'>
-                <h4
-                  className='uppercase text-md tracking-widest row-span-2'
+                {/* <h4
+                  className='capitalize text-md tracking-widest row-span-2'
                 >
                   {product.name}
-                </h4>
+                </h4> */}
+                <div>
+                  <StarsRating />
+                </div>
                 <p
-                  className='text-slate-600 text-sm row-span-1'
+                  className='text-white text-sm row-span-1'
                 >
-                  <span
+                  {/* <span
                     className='text-red-400 line-through'
                   >
                     750.00 EGP
-                  </span>
+                  </span> */}
                   <span
                     className='pl-2'
                   >

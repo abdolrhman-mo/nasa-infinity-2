@@ -13,9 +13,17 @@ export default function Logo({
         <Link 
             href={ROUTES.HOME}
             // className={`text-3xl font-bold ${className}`}
-            className={`${syncopate.className} text-xl font-bold ${className}`}
+            className={`${syncopate.className} text-xl font-bold flex items-center ${className}`}
         >
-          {APP_NAME}
+          <Image
+            src={'/imgs/logo.png'}
+            alt="logo"
+            width={500}
+            height={500}
+            className="h-6 w-auto pr-2"
+          />
+          <span className="text-orange-500 pr-1">Infinity</span>
+          Store
           {/* <Image
             src={'/logo.png'}
             alt={APP_NAME}

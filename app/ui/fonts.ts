@@ -16,6 +16,23 @@ export const syncopate = localFont({
   variable: '--font-inter',
 })
 
+export const rockwell = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Rockwell-Font/Rockwell-Bold.ttf',
+      // D:\ecommerce\nextjs-clients\nasa-infinity-2\public\fonts\Rockwell-Font\ROCK.TTF
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Rockwell-Font/Rockwell-Bold.ttf',
+      weight: '700',
+      style: 'bold',
+    },
+  ],
+  variable: '--font-rockwell',
+})
+
 export const inter = localFont({
   src: [
     {

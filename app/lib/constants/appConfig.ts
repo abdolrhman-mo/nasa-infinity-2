@@ -18,9 +18,9 @@ export const dashboradRoutes = [
     name: 'inventory',
     path: '/products/inventory'
   },
-  // {
-  //     name: 'products', 
-  //     path: '/products',
+  {
+      name: 'products', 
+      path: '/products',
   //     nestedLinks: [
   //         // {
   //         //     name: 'collections',
@@ -35,7 +35,7 @@ export const dashboradRoutes = [
   //         //     path: 'purchase-orders',
   //         // },
   //     ],
-  // },
+  },
   // { 
   //     name: 'customers', 
   //     path: 'customers',
