@@ -75,13 +75,29 @@ const Sdgs: NextPage<Props> = ({}) => {
         // bgGradient='red'
         className=''
       >
-        <Image 
-          src={'/imgs/fast-fashion/info.png'}
-          alt='info'
-          width={500}
-          height={500}
-          className='rounded-3xl mx-auto'
-        />
+        <div className='grid grid-cols-2'>
+          <div className='text-center h-full flex items-center justify-center'>
+            <div>
+              Washing polyster releases 
+              <p
+                className='text-9xl'
+                >
+                500,000
+              </p>
+              of microfibers into the ocean <span>every year</span>
+            </div>
+          </div>
+
+          <div className='flex justify-center items-center'>
+            <Image
+              src={'/imgs/fast-fashion/microplastic_hand.jpg'}
+              alt='sdg no. 13'
+              width={500}
+              height={500}
+              className='h-60 w-auto rounded-3xl'
+            />
+          </div>
+        </div>
       </SdgSection>
     </div>
   )
