@@ -72,23 +72,23 @@ export default function Page({
                 <Heading level={2}>{product.name}</Heading>
                 <div className="flex space-x-3">
                     {/* <p className="line-through">1300.00 EGP</p> */}
-                    <span
+                    {/* <span
                       className='text-red-400 line-through'
                     >
                       750.00 EGP
-                    </span>
-                    <p>{product.price} EGP</p>
+                    </span> */}
+                    <p className="text-white">{product.price} EGP</p>
                     {/* <p className="text-red-500">Save 300.00 EGP</p> */}
                 </div>
                 <hr />
-                <div className="text-center md:text-left">
+                {/* <div className="text-center md:text-left">
                     <p className="uppercase">size</p>
                     <SizeRadio 
                         onChange={handleSizeChange} 
                         selectedSize={selectedSize}
                         addToCartClicked={addToCartClicked}
                     />
-                </div>
+                </div> */}
                 <p className="text-red-500">{message}</p>
                 <AddToCartLink 
                     product={product} 
@@ -96,20 +96,21 @@ export default function Page({
                     removeSelectedSize={() => setSelectedSize('')}
                     onClick={() => {
                         setAddToCartClicked(!addToCartClicked)
-                        if (!selectedSize) {
-                            setMessage('You must choose a size!')
-                        } else {
-                            setMessage('')
-                        }
+                        // if (!selectedSize) {
+                        //     setMessage('You must choose a size!')
+                        // } else {
+                        //     setMessage('')
+                        // }
                     }}
                 />
                 <Button
                     onClick={() => {
-                        if (!selectedSize) {
-                          setMessage('You must choose a size!')
-                        } else {
-                          abdoRedirect(ROUTES.BUY_IT_NOW(params.id, selectedSize))
-                        }
+                        // if (!selectedSize) {
+                        //   setMessage('You must choose a size!')
+                        // } else {
+                        //   abdoRedirect(ROUTES.BUY_IT_NOW(params.id, selectedSize))
+                        // }
+                        abdoRedirect(ROUTES.BUY_IT_NOW(params.id, selectedSize))
                     }}
                     disabled={addToCartLoading}
                 >
@@ -130,7 +131,7 @@ export default function Page({
             <div className="text-center">
                 <Heading level={2}>you may also like</Heading>
             </div>
-            <ProductsList limit={2} tag='new' exceptProduct={product.id} />
+            <ProductsList limit={4} tag='all' exceptProduct={product.id} />
             <div className="w-fit mx-auto">
                 <CustomLink className="text-xs" href={ROUTES.COLLECTIONS.ALL}>continue shopping</CustomLink>
             </div>
