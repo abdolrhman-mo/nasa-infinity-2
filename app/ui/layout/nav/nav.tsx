@@ -19,6 +19,7 @@ import { useState } from 'react'
 import { abdoRedirect } from '@/app/lib/actions'
 import { ROUTES } from '@/app/lib/constants/routes'
 import { setActivePopup } from '@/redux/features/popup/popupSlice'
+import Image from 'next/image'
 
 export default function Nav() {
     const dispatch: any = useDispatch()
@@ -134,11 +135,23 @@ export default function Nav() {
                 {/* desktop */}
                 <ul className='flex'>
                     <li>
+                      <div className='relative'>
+                        <Image
+                          src={'/imgs/coin.png'}
+                          alt='coin'
+                          width={500}
+                          height={500}
+                          className='w-5 h-auto absolute -top-2 -left-2'
+                        />
+                        <p className='shadow shadow-red-500 py-1 px-2 rounded-2xl'>Points: 25</p>
+                      </div>
+                    </li>
+                    <li className='flex items-center'>
                         <button onClick={handleUserIconClick}>
                             <UserIcon className='h-6 px-2 hidden md:block cursor-pointer' />
                         </button>
                     </li>
-                    <li>
+                    <li className='flex items-center'>
                         <button>
                             <ShoppingBagIcon 
                                 className='h-6 px-2 cursor-pointer' 
