@@ -9,7 +9,7 @@ const TakeAction: NextPage<Props> = ({}) => {
       style={{ background: 'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 47%, rgba(23,97,115,1) 100%)' }} 
       className='py-14'
     >
-      <div className="bg-white rounded-3xl w-1/2 mx-auto p-10 text-center">
+      <div className="bg-white rounded-3xl w-5/6 md:w-1/2 mx-auto p-10 text-center">
         Got clothes you no longer wear?
         Why not sell them
         and give them a new life with someone else

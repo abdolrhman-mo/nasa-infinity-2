@@ -45,7 +45,7 @@ export default function Hero() {
                         alt="cup"
                         width={500}
                         height={500}
-                        className="h-32 w-auto"
+                        className="h-32 w-auto hidden md:block"
                       />
                       <p>to make one</p>
                       <Image
@@ -53,7 +53,7 @@ export default function Hero() {
                         alt="cotton tshirt"
                         width={500}
                         height={500}
-                        className="h-32 w-auto"
+                        className="h-32 w-auto  hidden md:block"
                       />
                       <p>cotton t-shirt</p>
                     </div>

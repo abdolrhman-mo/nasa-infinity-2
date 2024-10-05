@@ -8,7 +8,7 @@ interface Props {}
 
 const Sdgs: NextPage<Props> = ({}) => {
   return (
-    <div>
+    <div className='text-center'>
       <SdgSection  
         sdgImgUrl='/imgs/fast-fashion/a1.png'
         bgGradient='radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 47%, rgba(75,53,16,1) 100%)'
@@ -16,7 +16,7 @@ const Sdgs: NextPage<Props> = ({}) => {
         heading='Goal: Combat climate change.'
         className=''
       >
-        <div className='grid grid-cols-2'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
           <div className='text-center h-full flex items-center justify-center'>
             <div>
               The global fashion industry is responsible for 
@@ -45,7 +45,7 @@ const Sdgs: NextPage<Props> = ({}) => {
         heading='Ensuring sustainable consumption and production patterns.'
         className=''
       >
-        <div className='grid grid-cols-2'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
           <div className='flex justify-center'>
             <Image
               src={'/imgs/fast-fashion/sdg13.png'}
@@ -75,12 +75,12 @@ const Sdgs: NextPage<Props> = ({}) => {
         // bgGradient='red'
         className=''
       >
-        <div className='grid grid-cols-2'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
           <div className='text-center h-full flex items-center justify-center'>
             <div>
               Washing polyster releases 
               <p
-                className='text-9xl'
+                className='text-3xl md:text-9xl'
                 >
                 500,000
               </p>
